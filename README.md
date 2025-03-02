@@ -13,21 +13,17 @@ Ensure that your use of this project adheres to all applicable laws, regulations
 - Outputs the transcript in a structured JSON format, containing the offset, duration, language, and text.
 - Error handling included with an option to continue processing even on failure.
 
-## Installation
+## Installation [on standard n8n docker image]
 
-To install the node in your n8n instance:
+On docker host machine, run
 
-1. Open your n8n project
-2. Go to **Settings** > **Community Nodes**
-3. Search for the custom node repository and install it
-4. Restart n8n if necessary
+````bash
+docker exec -it -u root n8n /bin/sh -c "(mkdir -p /home/node/tmp && cd /home/node/tmp && git clone https://github.com/jazarja/n8n-nodes-yt-transcript.git && cd n8n-nodes-yt-transcript && pnpm i --prod=false && pnpm run build)"
+````
 
-For manual installation:
-```bash
-npm install n8n-nodes-yt-transcript
-```
-
-Alternatively, you can clone the repository to your n8n custom nodes folder and build the project manually.
+````bash
+docker exec -it -u node n8n /bin/sh -c "(mkdir -p /home/node/.n8n/nodes && cd /home/node/.n8n/nodes && pnpm i /home/node/tmp/n8n-nodes-yt-transcript)"
+````
 
 ## Node Parameters
 - **Video ID**: The ID of the YouTube video for which you want to fetch the transcript. This parameter is required.

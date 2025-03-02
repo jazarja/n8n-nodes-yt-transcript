@@ -4,7 +4,7 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 } from 'n8n-workflow';
-import {NodeOperationError} from 'n8n-workflow'
+import { NodeConnectionType, NodeOperationError } from 'n8n-workflow';
 import { YoutubeTranscript } from 'youtube-transcript';
 
 export class YoutubeTranscripter implements INodeType {
@@ -18,8 +18,8 @@ export class YoutubeTranscripter implements INodeType {
 		defaults: {
 			name: 'YouTube Transcript',
 		},
-		inputs: ["main" /* NodeConnectionType.Main */],
-		outputs: ["main" /* NodeConnectionType.Main */],
+		inputs: [NodeConnectionType.Main],
+		outputs: [NodeConnectionType.Main],
 		properties: [
 			{
 				displayName: 'Video ID',
